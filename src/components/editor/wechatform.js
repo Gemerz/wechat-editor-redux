@@ -99,5 +99,9 @@ class Wechatform extends Component {
 
 }
 
+Wechatform = reduxForm({ // <----- THIS IS THE IMPORTANT PART!
+  form: 'Wechat',                           // a unique name for this form
+  fields: ['firstName', 'lastName', 'email'] // all the fields in your form
+})(Wechatform);
 
 export default Wechatform

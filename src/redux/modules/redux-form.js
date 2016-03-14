@@ -4,5 +4,4 @@ const reducers = {
   // ... your other reducers here ...
   form: formReducer     // <---- Mounted at 'form'. See note below.
 }
-const reducer = combineReducers(reducers);
-const store = createStore(reducer);
+export default combineReducers(reducers);
