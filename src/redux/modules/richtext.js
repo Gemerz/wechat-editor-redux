@@ -2,9 +2,8 @@
 // ------------------------------------
 // Constants
 // ------------------------------------
-export const ARTICLE_ADD = 'ARTICLE_ADD'
-export const ARTICLE_EDITING = 'ARTICLE_EDITING'
-export const ARTICLE_DELETE = 'ARTICLE_DELETE'
+export const RICHTEXT_EDITING = 'RICHTEXT_EDITING'
+
 // ------------------------------------
 // Actions
 // ------------------------------------
@@ -13,10 +12,10 @@ export const ARTICLE_DELETE = 'ARTICLE_DELETE'
 // if you'd like to learn more you can check out: flowtype.org.
 // DOUBLE NOTE: there is currently a bug with babel-eslint where a `space-infix-ops` error is
 // incorrectly thrown when using arrow functions, hence the oddity.
-export function ARTICLE_ADD (value: number = 1): Action {
+export function richtextEditing (value: string = "ssksksks"): Action {
   return {
-    type: ARTICLE_ADD,
-    article: value
+    type: RICHTEXT_EDITING,
+    richText: value
   }
 }
 
@@ -38,21 +37,21 @@ export function ARTICLE_ADD (value: number = 1): Action {
 //}
 
 export const actions = {
-  ARTICLE_ADD
+  richtextEditing
 }
 
 // ------------------------------------
 // Action Handlers
 // ------------------------------------
 const ACTION_HANDLERS = {
-  [ARTICLE_ADD]: (state: number, action: {article: number}): number => state + action.article
+  [RICHTEXT_EDITING]: (state: string, action: {richText: string}): string => state + action.richText
 }
 
 // ------------------------------------
 // Reducer
 // ------------------------------------
-const initialState = 0
-export default function articleReducer (state: number = initialState, action: Action): number {
+const initialState = "text"
+export default function richtextReducer (state: string = initialState, action: Action): string {
   const handler = ACTION_HANDLERS[action.type]
 
   return handler ? handler(state, action) : state
