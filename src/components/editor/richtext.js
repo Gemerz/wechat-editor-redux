@@ -9,29 +9,22 @@ const quillMixin = ReactQuill.Mixin
 
 
 class richtext extends Component {
-  //mixins = [ReactQuill.Mixin]
 
   static propTypes = {
-    richText: React.PropTypes.string,
+    content: React.PropTypes.object,
     onChange: React.PropTypes.func
-  }
-
-
-  onTextChange = function () {
-    console.log()
   }
 
 
   render() {
 
-    const {richText,onTextChange} = this.props;
+    const {content,onTextChange} = this.props;
+    console.log(content);
 
 
     return (
       <div>
-        <ReactQuill theme='snow'
-                    defaultValue='dkdkdk' value={this.props.richText}
-                    onChange={this.onTextChange}/>
+        <ReactQuill theme='snow'  onChange={this.onTextChange}/>
       </div>
     )
   }

@@ -2,18 +2,19 @@ import React, {Component, PropTypes } from 'react'
 import ReactTooltip from 'react-tooltip'
 import { Form, Select,Input, InputNumber, Textarea,DatePicker, TimePicker, Switch, Radio,
   Slider, Button, Row, Col, Upload, Icon } from 'antd'
-//import RichText from './richtext'
+import RichText from './richtext'
 import {reduxForm} from 'redux-form';
 
+
+@reduxForm({
+  form: 'wechat',
+  fields: ['wcTittle', 'wcAuthor', 'wcCover', 'wcContent','wcSummary']
+})
 class Wechatform extends Component {
 
   static propTypes = {
-    state: React.PropTypes.object,
-    wechatform: React.PropTypes.object,
+    form: React.PropTypes.object,
     onTextChange: React.PropTypes.func
-  }
-  onTextChange = function () {
-    console.log()
   }
 
   render() {
@@ -22,24 +23,24 @@ class Wechatform extends Component {
     const RadioGroup = Radio.Group;
     const RangePicker = DatePicker.RangePicker;
     const Dragger = Upload.Dragger;
-    const DraggerProps = {
-      name: 'file',
-      showUploadList: false,
-      action: '/upload.do'
-    };
-    const {wechatform,onTextChange} = this.props;
-    const {fields: {firstName, lastName, email}, handleSubmit} = this.props;
+    //const DraggerProps = {
+    //  name: 'file',
+    //  showUploadList: false,
+    //  action: '/upload.do'
+    //};
+    const {fields: {wcTittle, wcAuthor,wcCover,wcSummary, wcContent}, handleSubmit} = this.props;
+
 
     return (
       <div className='wechat-editor-from'>
 
-        <Form horizontal>
+        <Form horizontal onSubmit={handleSubmit}>
           <FormItem
-            id='wcc-user'
+            id='wcTittle'
             label='标题：'
             labelCol={{ span: 4 }}
             wrapperCol={{ span: 14 }}>
-            <Input id='wcc-user' placeholder='' {...firstName}/>
+            <Input id='wcc-user' placeholder='' {...wcTittle}/>
           </FormItem>
 
           <FormItem
@@ -47,7 +48,7 @@ class Wechatform extends Component {
             label='作者：'
             labelCol={{ span: 4 }}
             wrapperCol={{ span: 14 }}>
-            <Input id='wcc-author' placeholder=' 選填'{...firstName}/>
+            <Input id='wcc-author' placeholder=' 選填'{...wcAuthor}/>
           </FormItem>
 
           <FormItem
@@ -55,7 +56,7 @@ class Wechatform extends Component {
             labelCol={{ span: 4 }}
             wrapperCol={{ span: 14 }}
             help='图片建议尺寸：850像素*350像素，大小不超过2M。上传'>
-            <Upload name='logo' action='/upload.do' listType='picture'>
+            <Upload name='logo' action='/upload.do' listType='picture' {...wcCover}>
               <Button type='ghost'>
                 <Icon type='upload'/> 点击上传
               </Button>
@@ -64,19 +65,20 @@ class Wechatform extends Component {
 
 
           <FormItem
-            id='control-textarea'
+            id='wcSummary'
             label='摘要：'
             labelCol={{ span: 4 }}
             wrapperCol={{ span: 14 }}>
-            <Input type='textarea' id='control-textarea' rows='3'/>
+            <Input type='textarea' id='wcSummary' rows='3' {...wcSummary}/>
           </FormItem>
           <FormItem
             id='control-textarea'
             label='&nbsp;'
             labelCol={{ span: 4 }}
-            wrapperCol={{ span: 18 }}
-            style={top='230px'}
-          >
+            wrapperCol={{ span: 18 }}>
+
+            <RichText content={wcContent}/>
+
 
           </FormItem>
 
@@ -99,9 +101,9 @@ class Wechatform extends Component {
 
 }
 
-Wechatform = reduxForm({ // <----- THIS IS THE IMPORTANT PART!
-  form: 'Wechat',                           // a unique name for this form
-  fields: ['firstName', 'lastName', 'email'] // all the fields in your form
-})(Wechatform);
+//Wechatform = reduxForm({ // <----- THIS IS THE IMPORTANT PART!
+//  form: 'Wechat',                           // a unique name for this form
+//  fields: ['wcTittle', 'wcAuthor', 'wcCover', 'wcContent'] // all the fields in your form
+//})(Wechatform);
 
 export default Wechatform
