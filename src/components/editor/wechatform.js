@@ -8,13 +8,16 @@ import {reduxForm} from 'redux-form';
 
 @reduxForm({
   form: 'wechat',
-  fields: ['wcTittle', 'wcAuthor', 'wcCover', 'wcContent','wcSummary']
+  fields: ['wcTittle', 'wcAuthor', 'wcCover', 'wcContent', 'wcSummary']
 })
 class Wechatform extends Component {
 
+
   static propTypes = {
-    form: React.PropTypes.object,
-    onTextChange: React.PropTypes.func
+    fields: PropTypes.object.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+
+
   }
 
   render() {
@@ -77,8 +80,7 @@ class Wechatform extends Component {
             labelCol={{ span: 4 }}
             wrapperCol={{ span: 18 }}>
 
-            <RichText content={wcContent}/>
-
+            <RichText />
 
           </FormItem>
 

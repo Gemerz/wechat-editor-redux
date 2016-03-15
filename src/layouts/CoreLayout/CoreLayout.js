@@ -2,8 +2,7 @@ import React, { PropTypes } from 'react'
 import { Menu, Breadcrumb, Icon } from 'antd';
 import '../../styles/core.scss'
 import 'antd/style/index.less'
-
-
+import 'font-awesome/scss/font-awesome.scss'
 
 // Note: Stateless/function components *will not* hot reload!
 // react-transform *only* works on component classes.
@@ -14,9 +13,10 @@ import 'antd/style/index.less'
 //
 // CoreLayout is a pure function of its props, so we can
 // define it with a plain javascript function...
-function CoreLayout ({ children }) {
+function CoreLayout({ children }) {
 
   const SubMenu = Menu.SubMenu;
+
   return (
     <div className='page-container'>
 
@@ -55,13 +55,13 @@ function CoreLayout ({ children }) {
           </div>
           <div className='ant-layout-container'>
             <div className='ant-layout-content'>
-                <div className='view-container'>
-                  {children}
-                </div>
+              <div className='view-container'>
+                {children}
+              </div>
             </div>
           </div>
           <div className='ant-layout-footer'>
-              版权所有 © 2015 Wizmacau
+            版权所有 © 2015 Wizmacau
           </div>
         </div>
       </div>

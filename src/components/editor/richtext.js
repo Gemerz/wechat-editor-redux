@@ -11,24 +11,32 @@ const quillMixin = ReactQuill.Mixin
 class richtext extends Component {
 
   static propTypes = {
-    content: React.PropTypes.object,
-    onChange: React.PropTypes.func
+    richtext: PropTypes.string.isRequired,
+    richtextEditing: PropTypes.func.isRequired,
+
+
   }
 
 
   render() {
 
-    const {content,onTextChange} = this.props;
-    console.log(content);
+    const {richtext,richtextEditing} = this.props;
+
+
 
 
     return (
       <div>
-        <ReactQuill theme='snow'  onChange={this.onTextChange}/>
+        <ReactQuill theme='snow' value={richtext}  onChange={richtextEditing}/>
       </div>
     )
   }
 
 
 }
-export default richtext
+const mapStateToProps = (state) => ({
+  richtext: state.richtext
+})
+export default connect((mapStateToProps), {
+  richtextEditing: () => richtextEditing()
+})(richtext)

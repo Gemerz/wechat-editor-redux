@@ -3,11 +3,15 @@ import ReactTooltip from 'react-tooltip'
 
 
 class Preview extends Component {
-  static propTypes= {
+  static propTypes = {
+    //fields: PropTypes.object.isRequired,
 
   }
 
   render() {
+
+
+
     return (
       <div className='wechat-editor-wrap'>
         <div className='wechat-editor'>
