@@ -3,27 +3,17 @@ import { connect } from 'react-redux'
 import ReactQuill from 'react-quill'
 import { richtextEditing} from '../../redux/modules/richtext'
 
-import "quill/dist/quill.snow.css"
-
-const quillMixin = ReactQuill.Mixin
-
 
 class richtext extends Component {
 
   static propTypes = {
     richtext: PropTypes.string.isRequired,
     richtextEditing: PropTypes.func.isRequired,
-
-
   }
-
 
   render() {
 
     const {richtext,richtextEditing} = this.props;
-
-
-
 
     return (
       <div>
@@ -32,11 +22,10 @@ class richtext extends Component {
     )
   }
 
-
 }
 const mapStateToProps = (state) => ({
   richtext: state.richtext
 })
 export default connect((mapStateToProps), {
-  richtextEditing: () => richtextEditing()
+  richtextEditing: () => richtextEditing('')
 })(richtext)

@@ -3,6 +3,7 @@ import { Menu, Breadcrumb, Icon } from 'antd';
 import '../../styles/core.scss'
 import 'antd/style/index.less'
 import 'font-awesome/scss/font-awesome.scss'
+import "quill/dist/quill.snow.css"
 
 // Note: Stateless/function components *will not* hot reload!
 // react-transform *only* works on component classes.

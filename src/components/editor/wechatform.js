@@ -2,9 +2,8 @@ import React, {Component, PropTypes } from 'react'
 import ReactTooltip from 'react-tooltip'
 import { Form, Select,Input, InputNumber, Textarea,DatePicker, TimePicker, Switch, Radio,
   Slider, Button, Row, Col, Upload, Icon } from 'antd'
-import RichText from './richtext'
-import {reduxForm} from 'redux-form';
-
+import {reduxForm} from 'redux-form'
+import ReactQuill from 'react-quill'
 
 @reduxForm({
   form: 'wechat',
@@ -16,8 +15,6 @@ class Wechatform extends Component {
   static propTypes = {
     fields: PropTypes.object.isRequired,
     handleSubmit: PropTypes.func.isRequired,
-
-
   }
 
   render() {
@@ -80,7 +77,7 @@ class Wechatform extends Component {
             labelCol={{ span: 4 }}
             wrapperCol={{ span: 18 }}>
 
-            <RichText />
+            <ReactQuill theme='snow' {...wcContent}  />
 
           </FormItem>
 

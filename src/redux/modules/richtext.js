@@ -12,7 +12,7 @@ export const RICHTEXT_EDITING = 'RICHTEXT_EDITING'
 // if you'd like to learn more you can check out: flowtype.org.
 // DOUBLE NOTE: there is currently a bug with babel-eslint where a `space-infix-ops` error is
 // incorrectly thrown when using arrow functions, hence the oddity.
-export function richtextEditing (value: string = "text"): Action {
+export function richtextEditing (value: string = "ssksksks"): Action {
   return {
     type: RICHTEXT_EDITING,
     richtext: value
@@ -50,7 +50,7 @@ const ACTION_HANDLERS = {
 // ------------------------------------
 // Reducer
 // ------------------------------------
-const initialState = ""
+const initialState = 'text'
 export default function richtextReducer (state: string = initialState, action: Action): string {
   const handler = ACTION_HANDLERS[action.type]
 

@@ -1,15 +1,17 @@
 import React, {Component, PropTypes } from 'react'
 import ReactTooltip from 'react-tooltip'
-
+import {reduxForm} from 'redux-form'
 
 class Preview extends Component {
-  static propTypes = {
-    //fields: PropTypes.object.isRequired,
 
+  static propTypes = {
+    fields: PropTypes.object.isRequired
   }
 
   render() {
 
+    const {fields} = this.props;
+    console.log(fields);
 
 
     return (
