@@ -2,9 +2,9 @@
 // ------------------------------------
 // Constants
 // ------------------------------------
-export const ARTICLE_ADD = 'ARTICLE_ADD'
-export const ARTICLE_EDITING = 'ARTICLE_EDITING'
-export const ARTICLE_DELETE = 'ARTICLE_DELETE'
+export const ARTICLE_ADD = 'ARTICLE_ADD';
+export const ARTICLE_EDITING = 'ARTICLE_EDITING';
+export const ARTICLE_DELETE = 'ARTICLE_DELETE';
 // ------------------------------------
 // Actions
 // ------------------------------------
@@ -13,47 +13,59 @@ export const ARTICLE_DELETE = 'ARTICLE_DELETE'
 // if you'd like to learn more you can check out: flowtype.org.
 // DOUBLE NOTE: there is currently a bug with babel-eslint where a `space-infix-ops` error is
 // incorrectly thrown when using arrow functions, hence the oddity.
-export function ARTICLE_ADD (value: number = 1): Action {
+export function addArticle(value:object = {
+  title: '',
+  thumbMediaId: '',
+  author: '',
+  digest: '',
+  showCoverPic: false,
+  content: '',
+  contentSourceUrl: ''
+}):Action {
+  console.log(value)
   return {
     type: ARTICLE_ADD,
-    article: value
+    articles: value
+  }
+
+}
+
+function editingArticle(value):Action {
+  return {
+    type: ARTICLE_EDITING,
+    articles: value
+  }
+}
+function deleteArticle(value):Action {
+  return {
+    type: ARTICLE_DELETE,
+    articles: value
   }
 }
 
-// This is a thunk, meaning it is a function that immediately
-// returns a function for lazy evaluation. It is incredibly useful for
-// creating async actions, especially when combined with redux-thunk!
-// NOTE: This is solely for demonstration purposes. In a real application,
-// you'd probably want to dispatch an action of COUNTER_DOUBLE and let the
-// reducer take care of this logic.
-//export const doubleAsync = (): Function => {
-//  return (dispatch: Function, getState: Function): Promise => {
-//    return new Promise((resolve: Function): void => {
-//      setTimeout(() => {
-//        dispatch(increment(getState().counter))
-//        resolve()
-//      }, 200)
-//    })
-//  }
-//}
-
 export const actions = {
-  ARTICLE_ADD
+  addArticle,
+  editingArticle,
+  deleteArticle
 }
 
 // ------------------------------------
 // Action Handlers
 // ------------------------------------
 const ACTION_HANDLERS = {
-  [ARTICLE_ADD]: (state: number, action: {article: number}): number => state + action.article
+  [ARTICLE_ADD]: (state:object, action:{articles: object}): object=> action.articles
+
 }
+
 
 // ------------------------------------
 // Reducer
 // ------------------------------------
-const initialState = 0
-export default function articleReducer (state: number = initialState, action: Action): number {
+const initialState = {}
+export default function articleReducer(state:object = initialState, action:Action):object {
   const handler = ACTION_HANDLERS[action.type]
+  console.log(state)
+
 
   return handler ? handler(state, action) : state
 }

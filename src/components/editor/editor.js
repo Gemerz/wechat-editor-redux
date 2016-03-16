@@ -4,7 +4,11 @@ import Preview from './preview'
 import Wechatform from './wechatform'
 
 class Editor extends Component {
-  static propTypes = {}
+  static propTypes = {
+
+  }
+
+  //const {} =this.props;
 
   render() {
     return (
